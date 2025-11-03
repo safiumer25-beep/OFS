@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OFS Group of Companies</title>
+  <style>
+    /* Basic Reset and Background */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url("4(276).png") no-repeat center center/cover;
+      /* Replace bg.jpg with your background image file */
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    }
+
+    h1 {
+      font-size: 42px;
+      margin: 10px 0;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      animation: slideText 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes slideText {
+      0% {
+        transform: translateX(-50px);
+      }
+      100% {
+        transform: translateX(50px);
+      }
+    }
+
+    p {
+      font-size: 22px;
+      color: #ddd;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #countdown {
+      font-size: 24px;
+      color: #00ffcc;
+      font-weight: bold;
+      margin-top: 10px;
+      text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+    }
+
+    .image-container img {
+      max-width: 150px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      margin-top: 25px;
+    }
+
+    /* Add a dark overlay for better text visibility */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.45);
+      z-index: -1;
+    }
+
+    /* Mobile-friendly design */
+    @media (max-width: 600px) {
+      header {
+        font-size: 18px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      p, #countdown {
+        font-size: 18px;
+      }
+      .image-container img {
+        max-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>OFS Group of Companies</header>
+
+  <main>
+    <h1>Stay Tuned</h1>
+    <p>Something Big Coming Soon...</p>
+    <div id="countdown"></div>
+    <div class="image-container">
+      <!-- Example: <img src="smiley.png" alt="Smiley" /> -->
+    </div>
+  </main>
+
+  <script>
+    // Countdown Timer Script
+    const countdownElement = document.getElementById("countdown");
+
+    // 95 days from now
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 95);
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeLeft = targetDate - now;
+
+      if (timeLeft <= 0) {
+        countdownElement.textContent = "We’re Live!";
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+
+      countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
